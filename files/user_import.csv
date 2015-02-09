@@ -1,0 +1,3 @@
+email,name,dob,gender,password,hours_worked,completion_date
+john@test.com,John Russell,25/04/1977,male,password,2,03/02/2015
+bob@gmail.com,Bob Smith,19/09/1989,male,sausages,1,16/02/2015

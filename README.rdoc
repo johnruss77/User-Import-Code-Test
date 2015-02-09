@@ -1,0 +1,26 @@
+== README
+
+John Russell code test Feb 2015
+
+Simple rails app to import users into projects.
+
+Projects:-
+==========
+
+Projects can be viewed from the projects option in main menu.  You can search for either a specific project name, or select 'View All' checkbox to view the entire list.
+
+Test projects can be generated to populate the database by running 
+Project.generate_test_projects from ruby console.  This will generate 20 dummy projects for test data
+
+Users:- 
+========
+
+When viewing a project, a list of members(users) of the project will be visible.  To import more users into this project, use the browse button to select the required csv file, and click 'Import Project Memers'.  The new relevant memebrs will appear on the project screen.
+
+Import CSV:-
+====================
+
+An example of the csv file can be found in files/user_import.csv.
+
+Please note the email,name,dob,gender,password columns can have any header, but must appear in that order in the file.  Any additional columns will be be stored in 'other_info' in the membership details for that user.  As many additional fields can be added extra to the reuired 5, and any column header you wish can be used.
+

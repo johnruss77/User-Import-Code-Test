@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ClTest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<body id="body" class="<%= controller_name %> <%= action_name %> <%= (content_for? :sub_nav)? 'sub_nav' : ''%>">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<ul class="nav navbar-nav">
+						<li class="navbar-header"> <%= link_to 'Home', root_path%></li>
+						<li class="navbar-header"> <%= link_to 'Projects', projects_path%></li>
+					</ul>	
+				</div>
+
+					
+			
+			</div>
+		</div>
+
+		<div id="main-container" class="container">
+			<div class="row">
+				<% if content_for? :side_nav%>
+					<div id="sub_nav" class="col-md-3">
+						<div class="well sidebar-nav">
+							<%= yield(:side_nav)%>
+						</div>
+					</div>
+				<%end%>
+				<div class="col-md-<%= (content_for? :side_nav)? '9' : '12'%>">
+					<%#= render(:partial => "layouts/flashmessage")%>
+					<%= yield(:content) %>
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<div id="copyright" class="text-muted">
+					<a href="https://github.com/johnruss77">John's GitHub</a>&nbsp; Feb <%= Time.now.strftime('%Y') %>
+				</div>
+			</div>
+		</div>
+</body>
+
+
+</html>
+

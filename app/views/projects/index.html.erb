@@ -1,0 +1,70 @@
+<h1> Projects </h1>
+
+<%= form_tag search_projects_path, :method => :get do %>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6">  
+            <div class="row">
+
+                    <div class="col-lg-8">
+                        <%= label :search, :name %>
+                        <%= text_field :search, :name, :value => params[:search][:name], :class => 'form-control' %>
+                    </div>
+            </div>
+
+
+        </div>
+
+          <div class="row">
+
+              <div class="checkbox">
+                    <%= label :search, :view_all do %>
+                        <%= check_box :search, :view_all, :checked => params[:search][:view_all].to_bool %>
+                        View All
+                    <% end %>
+                </div>
+
+           </div>     
+        
+      
+    </div>
+</div>
+
+<div class="form-group">    
+    <p>
+        <%= submit_tag "Search", :class => 'btn btn-default' %>
+    </p>
+</div>
+
+<% if @projects.present? %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Project </th>
+                <th> Members </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @projects.each do |p| %>
+            <tr>
+                <td><%= h p.name %></td>
+                <td> <%= h p.users.count %> </td>
+                <td> <%= link_to 'View', p %> </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% else %>
+        <% if @search == true %>
+        <hr/>
+        <p>
+            <b>There were no projects that match that name.</b>
+        </p>
+        <hr/>
+        <% end %>
+    <% end %>
+<% end %>
+
+

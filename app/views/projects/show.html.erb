@@ -1,0 +1,50 @@
+
+		<h3>Project:- <%= @project.name %></h3>
+
+		<hr>
+		<h5>Members</h5>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th> Name </th>
+					<th> Email </th>
+					<th> Born on </th>
+					<th> Gender </th>
+					<th> Password </th>
+					<th> Other Info </th>
+				
+				</tr>
+			</thead>
+			<tbody>
+			<%#=	puts "#{month[:month_number]} - #{num} - #{month[:depreciation_value].to_s}  - #{month[:left_to_run].to_s} - #{month[:cbv].to_s}"#{}" - #{I18n.l(month[:num].to_date, :format => :short)}" %>
+
+				<% @project.memberships.each do |m| %> 
+				<tr>
+					<td><%=h m.user.name %></td>
+					<td><%=h m.user.email %></td>
+					<td><%=h m.user.born_on %></td>
+					<td><%=h m.user.gender %></td>
+					<td><%=h m.user.password %></td>
+					<td><%=h m.view_info %></td>
+						
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<hr>
+
+        <%=form_for @project, :html => {:class=>'form-horizontal', :multipart => true} do |f| %>
+
+			<div class="row">
+				<div class="col-md-6">
+					<%= file_field_tag(:import, :size => 40) %>
+				</div>
+			</div>	
+
+			<div class="form-actions">
+				<%= f.submit 'Import Project Members', :class => 'btn btn-primary' %>
+			</div>
+
+		<% end %>	
